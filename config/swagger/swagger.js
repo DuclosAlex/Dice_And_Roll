@@ -1,4 +1,5 @@
 const swaggerJsDoc = require('swagger-jsdoc');
+const path = require('path');
 
 const options = {
     definition: {
@@ -8,8 +9,13 @@ const options = {
             version: '1.0.0',
             description: 'Documentation de l&apos; api du projet Dice and Rool'
         },
+        servers: [
+            {
+                url: "http://localhost:3000",
+            }
+        ]
     },
-    apis: ['./routes/*.ts'],
+    apis: [path.join(__dirname, '../../src/router/*.js')],
 };
 
 const swaggerSpec = swaggerJsDoc(options);
