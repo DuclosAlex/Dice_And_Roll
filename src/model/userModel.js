@@ -25,10 +25,10 @@ const userModel = {
 
         try {
 
-            const values = [user.pseudo, user.email, user.password, user.is_admin];
+            const values = [user.pseudo, user.email, user.password];
             const nbDollars = Array.from({length: values.length}, (_, i) => `$${i + 1}`).join(', ');
 
-            const sqlQuery = `INSERT INTO users (pseudo, email, password, is_admin)
+            const sqlQuery = `INSERT INTO users (pseudo, email, password)
             VALUES (${nbDollars})
             RETURNING *;`
 

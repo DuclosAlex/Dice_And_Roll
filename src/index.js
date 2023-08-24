@@ -15,6 +15,6 @@ app.use(bodyparser.urlencoded({extended: false}));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, { explorer: true}));
 app.use("/user", userRouter);
 
-app.listen(3000, () => {
+app.listen(8000, () => {
     console.log("serveur démarré ! ")
 });
