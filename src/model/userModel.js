@@ -11,19 +11,7 @@ const userModel = {
 
             if(verifyPassword) {
 
-                const sqlQuery = `SELECT users.id, users.email, users.pseudo, users.created_at, users.is_admin,
-                                    (
-                                        SELECT ARRAY_AGG(characters.name)
-                                        FROM characters
-                                        WHERE characters.user_id = users.id
-                                    ) AS characters,
-                                    (
-                                       SELECT ARRAY_AGG(games.name)
-                                        FROM games
-                                        WHERE games.user_id = users.id
-                                    ) AS games
-                                FROM users
-                                WHERE email = $1`
+                const sqlQuery = `SELECT * FROM user_login($1)`
 
                 const result = await db.query(sqlQuery, [email]);
                 console.log(result.rows[0]);

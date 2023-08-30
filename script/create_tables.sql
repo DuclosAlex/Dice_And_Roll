@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS "characters" (
     "class" TEXT NOT NULL,
     "background" TEXT,
     "user_id" INT REFERENCES "users"("id") ON DELETE CASCADE,
-    "games_id" INT REFERENCES "games"("id") ON DELETE CASCADE,
+    "game_id" INT REFERENCES "games"("id") ON DELETE CASCADE,
     "is_alive" BOOLEAN NOT NULL DEFAULT TRUE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP, -- on peut également utiliser NOW()
     "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP -- on peut également utiliser NOW()
