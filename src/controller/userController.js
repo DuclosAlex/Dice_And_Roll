@@ -1,5 +1,6 @@
 const { userModel } = require('../model');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const userController = {
 
@@ -43,7 +44,6 @@ const userController = {
                 res.status(401).json({error: "Désolé, un ou plusieurs de vos identifiants sont faux !"});
             }
 
-            console.log("password value", password);
             const compare = await bcrypt.compare(req.body.password, password);
             
             if(compare === false) {
@@ -51,6 +51,11 @@ const userController = {
             }
 
             const result = await userModel.findByMail(req.body.email, compare);
+
+            if(result !== undefined) {
+                const token = jwt.sign({ userIsAdmin: result.is_admin}, process.env.JWT_SECRET);
+                result.token = token;
+            }
 
             console.log("résultat final", result);
 
