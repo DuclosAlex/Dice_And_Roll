@@ -8,6 +8,8 @@ const userController = {
 
         try {
 
+            console.log(req.body);
+
             const { pseudo, email} = req.body;
 
             const existingUser = await userModel.getUserByPseudoOrMail(pseudo, email);
@@ -55,6 +57,7 @@ const userController = {
             if(result !== undefined) {
                 const token = jwt.sign({ userIsAdmin: result.is_admin}, process.env.JWT_SECRET);
                 result.token = token;
+  
             }
 
             console.log("résultat final", result);

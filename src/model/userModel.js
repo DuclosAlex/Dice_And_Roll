@@ -6,23 +6,17 @@ const userModel = {
 
         try {
 
-            console.log("test in model", verifyPassword);
-            console.log("test email", email)
-
             if(verifyPassword) {
 
                 const sqlQuery = `SELECT * FROM user_login($1)`
 
                 const result = await db.query(sqlQuery, [email]);
-                console.log(result.rows[0]);
-
                 return result.rows[0];
 
             } else {
 
                 const sqlQuery = 'SELECT password FROM users WHERE email = $1;';
                 const result = await db.query(sqlQuery, [email]);
-                console.log("find somethgin", result.rows[0]);
                 return result.rows[0];
             }
         } catch(error) {
