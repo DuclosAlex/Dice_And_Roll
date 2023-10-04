@@ -3,7 +3,7 @@ const express = require('express');
 const swaggerSpec = require('../config/swagger/swagger');
 const swaggerUi = require('swagger-ui-express');
 const bodyparser = require('body-parser')
-const { userRouter }= require('./router');
+const { userRouter, characterRouter }= require('./router');
 const cors = require('cors');
 
 const app = express();
@@ -15,6 +15,7 @@ app.use(bodyparser.urlencoded({extended: false}));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, { explorer: true}));
 app.use("/user", userRouter);
+app.use("/character", characterRouter);
 
 app.listen(8000, () => {
     console.log("serveur démarré ! ")
