@@ -5,9 +5,6 @@ const characterModel = {
     async findById(id) {
 
         try {
-
-            console.log('id', id)
-
             const sqlQuery = "SELECT * from get_character_with_data($1)";
             const result = await db.query(sqlQuery, [id]);
 

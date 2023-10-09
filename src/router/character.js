@@ -154,21 +154,16 @@
 /**
  * @swagger
  * /character/getById:
- *   post:
+ *   get:
  *     summary: Get character by ID
  *     tags: [Characters]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               id:
- *                 type: integer
- *                 description: The ID of the character to retrieve
- *             required:
- *               - id
+ *     parameters:
+ *       - in: query
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           description: The ID of the character to retrieve
  *     responses:
  *       200:
  *         description: Details of a character with their skills, items, and stats
@@ -176,19 +171,17 @@
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Character'
+ *       400:
+ *         description: Bad request if ID is not provided
  *       500:
  *         description: Some server error
  */
-
-
-
-
 
 
 const express = require('express');
 const { characterController } = require('../controller');
 const router = express.Router();
 
-router.post('/getById', characterController.findCharacterById);
+router.get('/getById', characterController.findCharacterById);
 
 module.exports = router;

@@ -6,8 +6,8 @@ const characterController = {
 
         try {
 
-            console.log(req.body)
-            const id = req.body.id;
+            const id = req.query.id
+            console.log("id", id)
 
             if(!id) {
                 return res.status(400).json({error: 'Pas d\'identifiant présent'});
@@ -15,7 +15,7 @@ const characterController = {
             }
 
             const result = await characterModel.findById(id);
-            console.log('result', result)
+            console.log(result)
             return res.json(result);
 
         } catch(error) {
