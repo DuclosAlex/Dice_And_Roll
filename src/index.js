@@ -3,7 +3,7 @@ const express = require('express');
 const swaggerSpec = require('../config/swagger/swagger');
 const swaggerUi = require('swagger-ui-express');
 const bodyparser = require('body-parser')
-const { userRouter, characterRouter, statsRouter } = require('./router');
+const { userRouter, characterRouter, statsRouter, skillRouter } = require('./router');
 const cors = require('cors');
 
 const app = express();
@@ -17,6 +17,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, { explorer: t
 app.use("/user", userRouter);
 app.use("/character", characterRouter);
 app.use("/stats", statsRouter);
+app.use("/skill", skillRouter);
 
 app.listen(8000, () => {
     console.log("serveur démarré ! ")
