@@ -5,5 +5,6 @@ const router = express.Router();
 const {skillController} = require('../controller');
 
 router.post('/create', skillController.createSkill);
+router.delete('/delete/:id', skillController.deleteSkill);
 
 module.exports = router;
