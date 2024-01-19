@@ -14,4 +14,4 @@ Les principales nouveautés seront de construire tout le front en utilisant tail
 
 ## Spécificité Back-end
 
-Pour cette partie Back, je reprends Express que j'avais utilisé sur la version d'origine, mais j'ajoute de nouvelle choses, comme l'utilisation de Docker, l'ajout d'une JS Doc avec Swagger et je compte approfondir et maîtriser la partie authentification et sécurité de l'application
+Pour cette partie Back, je reprends Express que j'avais utilisé sur la version d'origine, mais j'ajoute de nouvelle choses, comme l'utilisation de Docker, l'ajout d'une JS Doc avec Swagger et je compte approfondir et maîtriser la partie authentification et sécurité de l'application. 
