@@ -54,24 +54,26 @@ const userController = {
 
             const result = await userModel.findByMail(req.body.email, compare);
 
+            const tokenData = {
+                userIsAdmin: result.user.is_admin,
+                user: result.user
+            };
+
+            console.log('token data', tokenData)
+
             if(result !== undefined) {
-                const token = jwt.sign({ userIsAdmin: result.is_admin}, process.env.JWT_SECRET);
-                result.token = token;
-  
+                const token = jwt.sign(tokenData, process.env.JWT_SECRET);
+                return res.json({success: true, token: token})
             }
 
-            console.log("résultat final", result);
-
-            res.json(result);
-
-
-
+            res.json(result); 
         } catch(error) {
             console.error(error);
             throw error;
         }
 
     },
+
 }
 
 module.exports = userController;
